@@ -1,18 +1,46 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>belajar</groupId>
-		<artifactId>aplikasi-manajemen-peserta</artifactId>
-		<version>0.1.1-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>belajar</groupId>
+        <artifactId>aplikasi-manajemen-peserta</artifactId>
+        <version>0.1.1-SNAPSHOT</version>
+    </parent>
 
-	<artifactId>aplikasi-manajemen-peserta-jaxws</artifactId>
-	<packaging>war</packaging>
-	<name>Expose Service dengan Jax-WS</name>
-
-	<dependencies>
-	</dependencies>
-
+    <artifactId>aplikasi-manajemen-peserta-jaxws</artifactId>
+    <packaging>war</packaging>
+    <name>Expose Service dengan Jax-WS</name>
+    <repositories>
+        <repository>
+            <url>http://download.java.net/maven/2</url>
+            <id>metro</id>
+            <layout>default</layout>
+            <name>Repository for library[metro]</name>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <name>java.net</name>
+            <id>java.net</id>
+            <url>http://download.java.net/maven/2/</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <dependencies>
+        <dependency>
+            <groupId>belajar</groupId>
+            <artifactId>aplikasi-manajemen-peserta-service</artifactId>
+            <version>0.1.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>webservices-rt</artifactId>
+            <version>1.4</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+ <properties>
+  <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
+ </properties>
 </project>
 
