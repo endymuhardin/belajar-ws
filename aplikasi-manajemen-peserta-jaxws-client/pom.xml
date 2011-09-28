@@ -11,8 +11,73 @@
 	<artifactId>aplikasi-manajemen-peserta-jaxws-client</artifactId>
 	<packaging>jar</packaging>
 	<name>JAX-WS Client</name>
-
-
-	<dependencies>
+ <build>
+  <resources>
+   <resource>
+    <targetPath>META-INF</targetPath>
+    <directory>src</directory>
+    <includes/>
+   </resource>
+  </resources>
+  <plugins>
+   <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>jaxws-maven-plugin</artifactId>
+    <version>1.10</version>
+    <executions>
+     <execution>
+      <goals>
+       <goal>wsimport</goal>
+      </goals>
+      <configuration>
+       <wsdlFiles>
+        <wsdlFile>localhost_8080/aplikasi-manajemen-peserta-jaxws/ManajemenPesertaWS.wsdl</wsdlFile>
+       </wsdlFiles>
+       <wsdlLocation>http://localhost:8080/aplikasi-manajemen-peserta-jaxws/ManajemenPesertaWS?WSDL</wsdlLocation>
+       <staleFile>${project.build.directory}/jaxws/stale/ManajemenPesertaWS.stale</staleFile>
+      </configuration>
+      <id>wsimport-generate-ManajemenPesertaWS</id>
+      <phase>generate-sources</phase>
+     </execution>
+    </executions>
+    <dependencies>
+     <dependency>
+      <groupId>javax.xml</groupId>
+      <artifactId>webservices-api</artifactId>
+      <version>1.4</version>
+     </dependency>
+    </dependencies>
+    <configuration>
+     <sourceDestDir>${project.build.directory}/generated-sources/jaxws-wsimport</sourceDestDir>
+     <xnocompile>true</xnocompile>
+     <verbose>true</verbose>
+     <extension>true</extension>
+     <catalog>${basedir}/src/jax-ws-catalog.xml</catalog>
+    </configuration>
+   </plugin>
+  </plugins>
+ </build>
+ <repositories>
+  <repository>
+   <url>http://download.java.net/maven/2</url>
+   <id>metro</id>
+   <layout>default</layout>
+   <name>Repository for library[metro]</name>
+  </repository>
+ </repositories>
+ <pluginRepositories>
+  <pluginRepository>
+   <name>java.net</name>
+   <id>java.net</id>
+   <url>http://download.java.net/maven/2/</url>
+  </pluginRepository>
+ </pluginRepositories>
+ <dependencies>
+	 <dependency>
+	  <groupId>com.sun.xml.ws</groupId>
+	  <artifactId>webservices-rt</artifactId>
+	  <version>1.4</version>
+	  <scope>provided</scope>
+	 </dependency>
 	</dependencies>
 </project>

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.1 (branches/2.1-6728; 2011-02-03T14:14:58+0000) JAXWS-RI/2.2.3 JAXWS/2.2. --><xs:schema xmlns:tns="http://peserta.aplikasi/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://peserta.aplikasi/">
+
+<xs:element name="countSemuaPeserta" type="tns:countSemuaPeserta" />
+
+<xs:element name="countSemuaPesertaResponse" type="tns:countSemuaPesertaResponse" />
+
+<xs:element name="findPesertaByNomerPeserta" type="tns:findPesertaByNomerPeserta" />
+
+<xs:element name="findPesertaByNomerPesertaResponse" type="tns:findPesertaByNomerPesertaResponse" />
+
+<xs:element name="findSemuaPeserta" type="tns:findSemuaPeserta" />
+
+<xs:element name="findSemuaPesertaResponse" type="tns:findSemuaPesertaResponse" />
+
+<xs:element name="hello" type="tns:hello" />
+
+<xs:element name="helloResponse" type="tns:helloResponse" />
+
+<xs:element name="simpan" type="tns:simpan" />
+
+<xs:element name="simpanResponse" type="tns:simpanResponse" />
+
+<xs:complexType name="countSemuaPeserta">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="countSemuaPesertaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:long" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hello">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="helloResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findSemuaPeserta">
+<xs:sequence>
+<xs:element name="start" type="xs:int" minOccurs="0" />
+<xs:element name="rows" type="xs:int" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findSemuaPesertaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findPesertaByNomerPeserta">
+<xs:sequence>
+<xs:element name="nomerPeserta" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findPesertaByNomerPesertaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:peserta" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="peserta">
+<xs:sequence>
+<xs:element name="id" type="xs:int" minOccurs="0" />
+<xs:element name="nama" type="xs:string" minOccurs="0" />
+<xs:element name="nomerPeserta" type="xs:string" minOccurs="0" />
+<xs:element name="tanggalLahir" type="xs:dateTime" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="simpan">
+<xs:sequence>
+<xs:element name="peserta" type="tns:peserta" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="simpanResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:peserta" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
