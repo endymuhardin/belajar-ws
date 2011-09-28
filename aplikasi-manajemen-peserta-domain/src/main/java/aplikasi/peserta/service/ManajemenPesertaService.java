@@ -14,7 +14,7 @@ import java.util.List;
 public interface ManajemenPesertaService {
     public void simpan(Peserta p );
     public Peserta findPesertaById(Integer id) ;
-    public Peserta findPesrtaByNomerPeserta(String no);
+    public Peserta findPesertaByNomerPeserta(String no);
     public List<Peserta> findSemuaPeserta(Integer start, Integer rows);
     public Long countSemuaPeserta();
 }

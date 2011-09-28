@@ -33,7 +33,7 @@ public class ManajemenPesertaServiceDummy implements ManajemenPesertaService {
     }
 
     @Override
-    public Peserta findPesrtaByNomerPeserta(String no) {
+    public Peserta findPesertaByNomerPeserta(String no) {
         for(Integer i : dbPalsu.keySet()){
             Peserta p = dbPalsu.get(i);
             if(p.getNomerPeserta().equals(no)) {

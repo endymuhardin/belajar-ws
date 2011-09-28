@@ -36,7 +36,7 @@ public class ManajemenPesertaWS {
     public Peserta findPesertaByNomerPeserta(@WebParam(name = "nomerPeserta")
     String nomerPeserta) {
         
-        return service.findPesrtaByNomerPeserta(nomerPeserta);
+        return service.findPesertaByNomerPeserta(nomerPeserta);
     }
 
     /**
