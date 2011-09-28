@@ -69,5 +69,15 @@ public class ManajemenPesertaServiceDummy implements ManajemenPesertaService {
         }
         return hasil;
     }
-    
+    @Override
+    public Long countPesertaByNama(String nama) {
+        List<Peserta> hasil = new ArrayList<Peserta>();
+        for (Integer id : dbPalsu.keySet()) {
+            Peserta p = dbPalsu.get(id);
+            if(p.getNama().contains(nama)){
+                hasil.add(p);
+            }
+        }
+        return Long.valueOf(hasil.size());
+    }
 }
