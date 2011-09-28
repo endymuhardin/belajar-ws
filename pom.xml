@@ -14,6 +14,7 @@
         <module>aplikasi-manajemen-peserta-service</module>
         <module>aplikasi-manajemen-peserta-jaxws</module>
 		<module>aplikasi-manajemen-peserta-jaxws-client</module>
+		<module>aplikasi-manajemen-peserta-jaxws-client-web</module>
   </modules>
 
     <!-- Shared version number properties -->
