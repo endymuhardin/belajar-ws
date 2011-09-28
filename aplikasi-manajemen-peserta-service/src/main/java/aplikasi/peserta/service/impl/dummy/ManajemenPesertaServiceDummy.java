@@ -24,6 +24,12 @@ public class ManajemenPesertaServiceDummy implements ManajemenPesertaService {
         if(p.getId() == null){
             p.setId(dbPalsu.size());
         }
+        
+        // fix bug kalau id dikosongkan di WS, ternyata diset jadi 0
+        Peserta px = dbPalsu.get(p.getId());
+        if(px == null){
+            p.setId(dbPalsu.size());
+        }
         dbPalsu.put(p.getId(), p);
     }
 
