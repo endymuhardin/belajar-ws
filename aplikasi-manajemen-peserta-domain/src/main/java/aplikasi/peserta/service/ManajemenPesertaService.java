@@ -17,4 +17,6 @@ public interface ManajemenPesertaService {
     public Peserta findPesertaByNomerPeserta(String no);
     public List<Peserta> findSemuaPeserta(Integer start, Integer rows);
     public Long countSemuaPeserta();
+    
+    public List<Peserta> findPesertaByNama(String nama);
 }
