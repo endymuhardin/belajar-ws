@@ -68,5 +68,10 @@ public class PesertaController {
         return peserta;
     }
     
+    @RequestMapping(value="/{id}", method=RequestMethod.GET)
+    @ResponseBody
+    public Peserta findPesertaById(@PathVariable Integer id){
+        return service.findPesertaById(id);
+    }
     
 }
