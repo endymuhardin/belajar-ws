@@ -74,4 +74,14 @@ public class PesertaController {
         return service.findPesertaById(id);
     }
     
+    @RequestMapping(value="/{id}", method=RequestMethod.PUT)
+    @ResponseBody
+    public Peserta update(@PathVariable Integer id, @RequestBody Peserta peserta){
+        Peserta px = service.findPesertaById(id);
+        px.setNama(peserta.getNama());
+        px.setNomerPeserta(peserta.getNomerPeserta());
+        px.setTanggalLahir(peserta.getTanggalLahir());
+        return px;
+    }
+    
 }
