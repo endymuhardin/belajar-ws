@@ -10,6 +10,7 @@ import aplikasi.peserta.service.impl.dummy.ManajemenPesertaServiceDummy;
 import java.util.Date;
 import java.util.List;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,5 +39,12 @@ public class PesertaController {
         Integer start = 0; 
         Integer rows = 10;
         return service.findSemuaPeserta(start, rows);
+    }
+    
+    @RequestMapping(value="/", method=RequestMethod.POST)
+    @ResponseBody
+    public Peserta simpan(@RequestBody Peserta peserta){
+        service.simpan(peserta);
+        return peserta;
     }
 }
