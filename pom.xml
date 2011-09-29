@@ -12,6 +12,7 @@
         <module>aplikasi-manajemen-peserta-config</module>
 		<module>aplikasi-manajemen-peserta-domain</module>
         <module>aplikasi-manajemen-peserta-service</module>
+        <module>aplikasi-manajemen-peserta-springmvc</module>
         <module>aplikasi-manajemen-peserta-jaxws</module>
 		<module>aplikasi-manajemen-peserta-jaxws-client</module>
 		<module>aplikasi-manajemen-peserta-jaxws-client-web</module>
