@@ -5,11 +5,13 @@
 package aplikasi.peserta.domain;
 
 import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Student-03
  */
+@XmlRootElement
 public class Peserta {
     private Integer id;
     private String nomerPeserta;
