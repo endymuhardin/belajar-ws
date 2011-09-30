@@ -86,6 +86,7 @@
                             <keystore>${project.build.directory}/jetty-ssl.keystore</keystore>
                             <password>jetty6</password>
                             <keyPassword>jetty6</keyPassword>
+                            <!--<needClientAuth>true</needClientAuth>-->
                         </connector>
                     </connectors>
                 </configuration>
