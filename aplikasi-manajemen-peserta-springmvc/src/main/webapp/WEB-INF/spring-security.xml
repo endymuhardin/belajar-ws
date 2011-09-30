@@ -11,7 +11,8 @@
 
     <http auto-config='true'>
         <http-basic />
-        
+        <intercept-url pattern="/rest/peserta/**" method="POST" access="ROLE_ADMIN" requires-channel="https"/>
+        <intercept-url pattern="/rest/peserta/**" method="PUT" access="ROLE_ADMIN" requires-channel="https"/>
         <intercept-url pattern="/**" access="ROLE_USER" requires-channel="https"/>
         <port-mappings>
             <port-mapping http="10000" https="10001"/>
