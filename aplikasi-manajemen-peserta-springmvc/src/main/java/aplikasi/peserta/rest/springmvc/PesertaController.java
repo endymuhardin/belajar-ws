@@ -5,12 +5,14 @@
 package aplikasi.peserta.rest.springmvc;
 
 import aplikasi.peserta.domain.Peserta;
+import aplikasi.peserta.helper.PesertaConverter;
 import aplikasi.peserta.service.ManajemenPesertaService;
 import aplikasi.peserta.service.impl.dummy.ManajemenPesertaServiceDummy;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
@@ -72,6 +74,16 @@ public class PesertaController {
         String requestUrl = request.getRequestURL().toString();
         URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, peserta.getId());
         response.setHeader("Location", uri.toASCIIString());
+    }
+    
+    @RequestMapping(value="/import", method=RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public void simpanBulk(@RequestBody List<Map<String, Object>> daftarPeserta, HttpServletRequest request, HttpServletResponse response){
+        for (Map<String, Object> peserta : daftarPeserta) {
+            service.simpan(PesertaConverter.fromMap(peserta));
+        }
+        String requestUrl = request.getContextPath() + "/rest/peserta/import";
+        response.setHeader("Location", requestUrl);
     }
     
     @RequestMapping(value="/{id}", method=RequestMethod.GET)
