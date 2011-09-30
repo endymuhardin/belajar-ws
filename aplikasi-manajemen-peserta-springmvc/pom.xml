@@ -38,6 +38,60 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>keytool-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <id>clean</id>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <id>genkey</id>
+                        <goals>
+                            <goal>genkey</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <keystore>${project.build.directory}/jetty-ssl.keystore</keystore>
+                    <dname>cn=com.artivisi.endy</dname><!-- put your CN here-->
+                    <keypass>jetty6</keypass>
+                    <storepass>jetty6</storepass>
+                    <alias>jetty6</alias>
+                    <keyalg>RSA</keyalg>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.26</version>
+                <configuration>
+                    <contextPath>/springrest</contextPath>
+                    <connectors>
+                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                            <port>10000</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                        <connector implementation="org.mortbay.jetty.security.SslSocketConnector">
+                            <port>10001</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                            <keystore>${project.build.directory}/jetty-ssl.keystore</keystore>
+                            <password>jetty6</password>
+                            <keyPassword>jetty6</keyPassword>
+                        </connector>
+                    </connectors>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
 
