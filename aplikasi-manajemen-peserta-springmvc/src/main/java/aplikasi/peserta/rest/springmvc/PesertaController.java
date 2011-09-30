@@ -78,11 +78,13 @@ public class PesertaController {
     
     @RequestMapping(value="/import", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void simpanBulk(@RequestBody List<Map<String, Object>> daftarPeserta, HttpServletRequest request, HttpServletResponse response){
+    public void simpanBulk(@RequestBody List<Map<String, Object>> daftarPeserta, 
+        HttpServletRequest request, 
+        HttpServletResponse response){
         for (Map<String, Object> peserta : daftarPeserta) {
             service.simpan(PesertaConverter.fromMap(peserta));
         }
-        String requestUrl = request.getContextPath() + "/rest/peserta/import";
+        String requestUrl = request.getContextPath() + "/rest/peserta/";
         response.setHeader("Location", requestUrl);
     }
     
