@@ -12,7 +12,10 @@
     <http auto-config='true'>
         <http-basic />
         
-        <intercept-url pattern="/**" access="ROLE_USER" />
+        <intercept-url pattern="/**" access="ROLE_USER" requires-channel="https"/>
+        <port-mappings>
+            <port-mapping http="10000" https="10001"/>
+        </port-mappings>
     </http>
     
     <authentication-manager>
