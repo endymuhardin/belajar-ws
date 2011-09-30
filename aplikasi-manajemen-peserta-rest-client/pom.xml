@@ -1,17 +1,18 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>belajar</groupId>
-		<artifactId>aplikasi-manajemen-peserta</artifactId>
-		<version>0.1.1-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>belajar</groupId>
+        <artifactId>aplikasi-manajemen-peserta</artifactId>
+        <version>0.1.1-SNAPSHOT</version>
+    </parent>
 
-	<artifactId>aplikasi-manajemen-peserta-rest-client</artifactId>
-	<packaging>jar</packaging>
-	<name>Aplikasi Client RESTful</name>
+    <artifactId>aplikasi-manajemen-peserta-rest-client</artifactId>
+    <packaging>jar</packaging>
+    <name>Aplikasi Client RESTful</name>
 
-	<dependencies>
+    <dependencies>
         <dependency>
             <groupId>belajar</groupId>
             <artifactId>aplikasi-manajemen-peserta-domain</artifactId>
@@ -29,8 +30,14 @@
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.8.5</version>
         </dependency>
+        
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
+        </dependency>
 		
-	</dependencies>
+    </dependencies>
 
 </project>
 
