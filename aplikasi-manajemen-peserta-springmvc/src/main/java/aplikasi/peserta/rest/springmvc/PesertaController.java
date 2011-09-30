@@ -7,11 +7,13 @@ package aplikasi.peserta.rest.springmvc;
 import aplikasi.peserta.domain.Peserta;
 import aplikasi.peserta.service.ManajemenPesertaService;
 import aplikasi.peserta.service.impl.dummy.ManajemenPesertaServiceDummy;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.util.UriTemplate;
 
 /**
  *
@@ -62,10 +66,12 @@ public class PesertaController {
     }
     
     @RequestMapping(value="/", method=RequestMethod.POST)
-    @ResponseBody
-    public Peserta simpan(@RequestBody Peserta peserta){
+    @ResponseStatus(HttpStatus.CREATED)
+    public void simpan(@RequestBody Peserta peserta, HttpServletRequest request, HttpServletResponse response){
         service.simpan(peserta);
-        return peserta;
+        String requestUrl = request.getRequestURL().toString();
+        URI uri = new UriTemplate("{requestUrl}/{id}").expand(requestUrl, peserta.getId());
+        response.setHeader("Location", uri.toASCIIString());
     }
     
     @RequestMapping(value="/{id}", method=RequestMethod.GET)
@@ -75,13 +81,12 @@ public class PesertaController {
     }
     
     @RequestMapping(value="/{id}", method=RequestMethod.PUT)
-    @ResponseBody
-    public Peserta update(@PathVariable Integer id, @RequestBody Peserta peserta){
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void update(@PathVariable Integer id, @RequestBody Peserta peserta){
         Peserta px = service.findPesertaById(id);
         px.setNama(peserta.getNama());
         px.setNomerPeserta(peserta.getNomerPeserta());
         px.setTanggalLahir(peserta.getTanggalLahir());
-        return px;
     }
     
 }
