@@ -5,10 +5,9 @@
 package aplikasi.peserta.rest.client;
 
 import aplikasi.peserta.domain.Peserta;
-import java.util.HashMap;
-import java.util.Map;
-import org.springframework.http.client.CommonsClientHttpRequestFactory;
-import org.springframework.web.client.RestTemplate;
+import aplikasi.peserta.rest.client.service.springmvc.ManajemenPesertaRestClientService;
+import aplikasi.peserta.service.ManajemenPesertaService;
+import java.util.List;
 
 /**
  *
@@ -16,15 +15,16 @@ import org.springframework.web.client.RestTemplate;
  */
 public class DaftarPesertaDemo {
     public static void main(String[] args) {
-        RestTemplate restTemplate = new RestTemplate(new CommonsClientHttpRequestFactory());
-        
-        String url = "http://localhost:8080/aplikasi-manajemen-peserta-springmvc-0.1.1-SNAPSHOT/rest/peserta/{id}";
-        Integer id = 0;
-        Map<String, Object> params = new HashMap<String, Object>();
-        params.put("id", id);
-        
-        
-        Peserta p = restTemplate.getForObject(url, Peserta.class, params);
+        ManajemenPesertaService service = new ManajemenPesertaRestClientService();
+        Peserta p = service.findPesertaById(0);
         System.out.println("Nama : "+p.getNama());
+        
+        List<Peserta> semua = service.findSemuaPeserta(0, 100);
+        for (Peserta peserta : semua) {
+            System.out.println("Id Peserta : "+peserta.getId());
+            System.out.println("Nomer Peserta : "+peserta.getNomerPeserta());
+            System.out.println("Nama Peserta : "+peserta.getNama());
+            System.out.println("Tanggal Lahir : "+peserta.getTanggalLahir());
+        }
     }
 }
