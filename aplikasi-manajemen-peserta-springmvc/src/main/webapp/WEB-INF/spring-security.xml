@@ -21,10 +21,13 @@
     
     <authentication-manager>
         <authentication-provider>
+            <!--
             <user-service>
                 <user name="endy" password="endy123" authorities="ROLE_USER, ROLE_ADMIN" />
                 <user name="mansyur" password="mansyur123" authorities="ROLE_USER" />
             </user-service>
+            -->
+            <jdbc-user-service data-source-ref="dataSource"/>
         </authentication-provider>
     </authentication-manager>
 
