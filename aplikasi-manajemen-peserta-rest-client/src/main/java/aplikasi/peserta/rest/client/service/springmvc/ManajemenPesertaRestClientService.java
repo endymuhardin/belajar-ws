@@ -5,6 +5,7 @@
 package aplikasi.peserta.rest.client.service.springmvc;
 
 import aplikasi.peserta.domain.Peserta;
+import aplikasi.peserta.helper.PesertaConverter;
 import aplikasi.peserta.service.ManajemenPesertaService;
 import java.net.URI;
 import java.util.ArrayList;
@@ -76,11 +77,7 @@ public class ManajemenPesertaRestClientService implements ManajemenPesertaServic
         List responseBody = response.getBody();
         for (Object r : responseBody) {
             Map<String, Object> content = (Map<String, Object>) r;
-            Peserta p = new Peserta();
-            p.setId((Integer)content.get("id"));
-            p.setNomerPeserta((String)content.get("nomerPeserta"));
-            p.setNama((String)content.get("nama"));
-            p.setTanggalLahir(new Date((Long) content.get("tanggalLahir")));
+            Peserta p = PesertaConverter.fromMap(content);
             hasil.add(p);
         }
         return hasil;
